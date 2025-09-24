@@ -1,0 +1,31 @@
+{% extends 'usuarios/base.html' %}
+{% block conteudo %}
+<form action="{% url 'formulario' %}" method="post">
+  {% csrf_token %}
+<div style="text-align: center;" class="container">
+  <h1>Fulcrum</h1>
+  Nome <input type="text" name="nome" placeholder="Digite seu nome" required>
+  Idade <input type="number" name="idade" placeholder="Digite sua idade">
+  <button type="submit" class="btn btn-dark">Enviar</button>
+  <div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div class="toast" id="meuToast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-body">
+      Olá, tome uma atitude agora
+      <div class="mt-2 pt-2 border-top">
+        <a href="https://www.youtube.com/watch?v=QwLvrnlfdNo" class="btn btn-primary btn-dark" target="_blank">Tome uma atitude</a>
+        <button type="button" class="btn btn-secondary btn-gray" data-bs-dismiss="toast">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</form>
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    var toastEl = document.getElementById('meuToast');
+    var toast = new bootstrap.Toast(toastEl);
+    toast.show();
+  });
+</script>
+
+{% endblock %}
